@@ -1,0 +1,41 @@
+
+.container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .to-do {
+    width: 50%;
+    height: auto;
+    border: 1px solid grey;
+    margin: auto;
+    padding: 50px;
+    background-color: white;
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .input-field {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .arrow-left {
+        width: 2%;
+        height: 15px;
+      }
+    }
+
+    .todo-list {
+      display: flex;
+      justify-content: space-between;
+      .text-box {
+        display: flex;
+      }
+    }
+  }
+}
