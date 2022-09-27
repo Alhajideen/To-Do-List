@@ -16,32 +16,92 @@ body {
   .to-do {
     width: 50%;
     height: auto;
-    border: 1px solid grey;
     margin: auto;
-    padding: 50px;
+    // padding: 50px 0;
     background-color: white;
+    box-shadow: 0px 0px 5px 5px rgba(145, 133, 133, 0.75);
+
+    .border {
+      padding: 20px 0;
+      border-bottom: 1px solid grey;
+    }
 
     .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 0 20px;
+      h1 {
+        font-size: 4vh;
+      }
+      span {
+        .fa-solid {
+          font-size: 25px;
+        }
+      }
     }
 
-    .input-field {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      .arrow-left {
-        width: 2%;
-        height: 15px;
+    .text-area {
+      padding: 0 20px;
+      .input-field {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        .field {
+          width: 95%;
+          padding: 20px 0;
+          border: none;
+          outline: none;
+          font-size: 20px;
+        }
+
+        .field::placeholder {
+          font-style: italic;
+          font-size: 20px;
+        }
+
+        .arrow-left {
+          width: 4%;
+          height: 20px;
+        }
       }
     }
 
     .todo-list {
+      padding: 0 20px;
       display: flex;
       justify-content: space-between;
+      align-items: center;
       .text-box {
         display: flex;
+
+        .checker {
+          margin-right: 20px;
+        }
+      }
+      .edit-icon {
+        padding-right: 10px;
+        font-size: 25px;
+      }
+    }
+
+    .clear-cmpl {
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      background-color: rgb(239, 235, 235);
+      button {
+        background-color: inherit;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        padding: 5px;
+      }
+
+      button:hover {
+        border-bottom: 1px solid black;
       }
     }
   }
