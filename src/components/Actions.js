@@ -26,6 +26,7 @@ const deleteItem = () => {
   editBtn.addEventListener('click', () => {
     console.log('I de work');
     delBtn.classList.toggle('visible');
+    editBtn.classList.toggle('hidden');
   });
 };
 
