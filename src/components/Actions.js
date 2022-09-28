@@ -16,4 +16,11 @@ const active = (items, container) => {
   container.innerHTML = toShow;
 };
 
-export default active;
+const deleteItem = () => {
+  const editBtn = document.querySelector('.edit-icon');
+  editBtn.addEventListener('click', () => {
+    console.log('I de work');
+  });
+};
+
+export default { active, deleteItem };

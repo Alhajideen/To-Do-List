@@ -1,7 +1,7 @@
 import './style.scss';
 import Arrow from './img/Arrows-Down-Left-icon.png';
 import Todo from './modules/Todo.js';
-import active from './components/ToDom';
+import active from './components/Actions';
 
 function component() {
   return `<div class='to-do'>
@@ -31,10 +31,9 @@ const items = [];
 const btn = document.querySelector('.add-btn');
 const container = document.querySelector('.todo-list');
 
-
 // Event handler
 btn.addEventListener('click', () => {
-  const id = Date.now();
+  const id = items.length + 1;
   const desc = document.querySelector('.description');
   const description = desc.value;
   const completed = false;
@@ -42,3 +41,7 @@ btn.addEventListener('click', () => {
   items.push(newTodo);
   active(items, container);
 });
+
+// const deleteItem(){
+
+// }
