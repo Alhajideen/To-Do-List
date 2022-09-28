@@ -1,6 +1,6 @@
 import './style.scss';
 import Arrow from './img/Arrows-Down-Left-icon.png';
-import Todo from './modules/Todo';
+import Todo from './modules/Todo.js';
 
 function component() {
   return `<div class='to-do'>
@@ -20,7 +20,7 @@ function component() {
      
   </div>
       <div class='clear-cmpl border'>
-        <button>Clear all completed</button>
+        <button type="button">Clear all completed</button>
       </div>`;
 }
 document.querySelector('.container').innerHTML = component();
@@ -45,7 +45,6 @@ btn.addEventListener('click', () => {
 // Populate Dom
 const addtoDom = () => {
   let toShow = '';
-  console.log(items);
   items.forEach((elem) => {
     toShow += ` <div class="to-hold">
       <div class='text-box'>
