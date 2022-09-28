@@ -8,19 +8,37 @@
 
 - HTML
 - CSS
-- JavaScript
+- JavaScript (ES6)
+- Linters
+- Webpack
 
-## Live Demo (if available)
+## Live Demo
+[Not available yet but checkout this cool GIF](https://giphy.com/clips/hamlet-jJjb9AUHOiP3nJJMdy)
 
-[Live Site Demo](https://Alhajideen.github.io/To-Do-List/)
 
 ## Getting Started
+To get a local copy up and running follow these simple example steps.
+1. Clone the project using `git clone` or just copy the command below:
+  ```
+   git clone https://github.com/didierganthier/todo-list.git
+   ```
+2. Open the project with `Visual Studio Code`
+3. Run `npm install` to get the dependencies
 
-Setting this project Locally,
+   *not sure how to use npm? Read [this](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).*
+4. Run the webpack server using this command:
+  ```
+   npm start
+   ```
+  *not sure how to use npm? Read [this](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).*
 
-- To get a local copy up and running follow these simple example steps.
-- Run "npm install" to install all dependemcies.
-- Run "mpm start" to open the app on your default browser
+### Prerequisites
+- Having VsCode installed and configured.
+- Having Git installed and configured.
+
+### Setup
+- Clone the repository.
+- Open the project folder in VS Code.
 
 ## Authors
 
