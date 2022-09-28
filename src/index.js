@@ -1,7 +1,7 @@
 import './style.scss';
 import Arrow from './img/Arrows-Down-Left-icon.png';
 import Todo from './modules/Todo.js';
-import active from './components/Actions';
+import { active } from './components/Actions';
 
 function component() {
   return `<div class='to-do'>
@@ -41,6 +41,7 @@ btn.addEventListener('click', () => {
   items.push(newTodo);
   active(items, container);
 });
+
 
 // const deleteItem(){
 

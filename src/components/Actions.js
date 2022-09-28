@@ -9,18 +9,24 @@ const active = (items, container) => {
       <div class='edit-icon'>
         <i class='fa-regular fa-ellipsis-vertical'></i>
       </div>
+      <div class='del-icon'>
+       <i class="fa-solid fa-trash-can"></i>
+      </div>
       </div>
     </div>
 `;
   });
   container.innerHTML = toShow;
+  deleteItem();
 };
 
 const deleteItem = () => {
   const editBtn = document.querySelector('.edit-icon');
+  const delBtn = document.querySelector('.del-icon');
   editBtn.addEventListener('click', () => {
     console.log('I de work');
+    delBtn.classList.toggle('visible');
   });
 };
 
-export default { active, deleteItem };
+export { active };
