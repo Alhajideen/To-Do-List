@@ -27,18 +27,36 @@ function component() {
 document.querySelector('.container').innerHTML = component();
 
 // Global variables
-const items = [];
 const btn = document.querySelector('.add-btn');
 const container = document.querySelector('.todo-list');
 
+//Get Item from local storage and diplay on load
+
+window.addEventListener('load', () => {
+  let storedItem = localStorage.getItem('todo');
+  let parsed = JSON.parse(storedItem);
+  if (parsed) {
+    active(parsed, container);
+  } else {
+    container.innerHTML = 'E no de';
+  }
+});
+
 // Event handler
 btn.addEventListener('click', () => {
-  const id = items.length + 1;
-  const desc = document.querySelector('.description');
-  const description = desc.value;
-  const completed = false;
-  const newTodo = new Todo(id, description, completed);
-  items.push(newTodo);
-  active(items, container);
-  localStorage.setItem('todo', JSON.stringify(items));
+  let storedItem = localStorage.getItem('todo');
+  let parsed = JSON.parse(storedItem);
+  if (parsed) {
+    let items = parsed;
+    const id = items.length + 1;
+    const desc = document.querySelector('.description');
+    const description = desc.value;
+    const completed = false;
+    const newTodo = new Todo(id, description, completed);
+    items.push(newTodo);
+    active(items, container);
+    localStorage.setItem('todo', JSON.stringify(items));
+  } else {
+    container.innerHTML = 'E no de';
+  }
 });
