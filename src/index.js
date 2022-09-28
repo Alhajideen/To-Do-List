@@ -1,8 +1,6 @@
 import './style.scss';
-import Home from './components/Home';
 import Arrow from './img/Arrows-Down-Left-icon.png';
 import Todo from './modules/Todo';
-const items = [];
 
 function component() {
   return `<div class='to-do'>
@@ -27,8 +25,13 @@ function component() {
 }
 document.querySelector('.container').innerHTML = component();
 
+//Global variables
+const items = [];
 const btn = document.querySelector('.add-btn');
 const container = document.querySelector('.todo-list');
+
+//Event handler
+
 btn.addEventListener('click', () => {
   const id = Date.now();
   const desc = document.querySelector('.description');
@@ -39,8 +42,9 @@ btn.addEventListener('click', () => {
   addtoDom();
 });
 
+// Populate Dom
 const addtoDom = () => {
-  let toShow = '';
+  const toShow = '';
   console.log(items);
   items.forEach((elem) => {
     toShow += ` <div class="to-hold">
