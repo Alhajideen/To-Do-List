@@ -19,18 +19,41 @@ function component() {
     </div>
     </div>
     <div class='todo-list border'>
+     
+  </div>
+      <div class='clear-cmpl border'>
+        <button>Clear all completed</button>
+      </div>`;
+}
+document.querySelector('.container').innerHTML = component();
+
+const btn = document.querySelector('.add-btn');
+const container = document.querySelector('.todo-list');
+btn.addEventListener('click', () => {
+  const id = Date.now();
+  const desc = document.querySelector('.description');
+  const description = desc.value;
+  const completed = false;
+  const newTodo = new Todo(id, description, completed);
+  items.push(newTodo);
+  addtoDom();
+});
+
+const addtoDom = () => {
+  let toShow = '';
+  console.log(items);
+  items.forEach((elem) => {
+    toShow += ` <div class="to-hold">
       <div class='text-box'>
         <input type='checkbox' class="checker" />
-        <h2>Lorem ipsum dolor sit amet.</h2>
+        <h2>${elem.description}</h2>
       </div>
       <div class='edit-icon'>
         <i class='fa-regular fa-ellipsis-vertical'></i>
       </div>
-      
-    </div>
-    <div class='clear-cmpl border'>
-        <button>Clear all completed</button>
       </div>
-  </div>`;
-}
-document.querySelector('.container').innerHTML = component();
+    </div>
+`;
+  });
+  container.innerHTML = toShow;
+};
