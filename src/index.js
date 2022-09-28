@@ -25,12 +25,12 @@ function component() {
 }
 document.querySelector('.container').innerHTML = component();
 
-//Global variables
+// Global variables
 const items = [];
 const btn = document.querySelector('.add-btn');
 const container = document.querySelector('.todo-list');
 
-//Event handler
+// Event handler
 
 btn.addEventListener('click', () => {
   const id = Date.now();
@@ -44,7 +44,7 @@ btn.addEventListener('click', () => {
 
 // Populate Dom
 const addtoDom = () => {
-  const toShow = '';
+  let toShow = '';
   console.log(items);
   items.forEach((elem) => {
     toShow += ` <div class="to-hold">
