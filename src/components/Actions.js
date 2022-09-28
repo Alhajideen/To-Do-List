@@ -57,6 +57,7 @@ const deleteItem = () => {
       } else {
         Storage.resetId(index);
       }
+      window.location.reload();
     });
   });
 };
