@@ -45,6 +45,7 @@ const deleteItem = (item) => {
       elem.parentElement.remove();
       item.splice(index, 1);
       console.log(item[index]);
+      
     });
   });
 };

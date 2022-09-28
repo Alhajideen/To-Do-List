@@ -40,4 +40,5 @@ btn.addEventListener('click', () => {
   const newTodo = new Todo(id, description, completed);
   items.push(newTodo);
   active(items, container);
+  localStorage.setItem('todo', JSON.stringify(items));
 });
