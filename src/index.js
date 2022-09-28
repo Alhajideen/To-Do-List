@@ -41,8 +41,3 @@ btn.addEventListener('click', () => {
   items.push(newTodo);
   active(items, container);
 });
-
-
-// const deleteItem(){
-
-// }

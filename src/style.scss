@@ -8,11 +8,11 @@ body {
 }
 
 .visible {
-  display: block;
+  display: block !important;
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .container {
@@ -89,13 +89,22 @@ body {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        border-bottom: 1px solid grey;
 
         .text-box {
           display: flex;
           justify-content: space-between;
-
+          .edit-item {
+            display: none;
+            width: 95%;
+            padding: 20px 0;
+            border: none;
+            outline: none;
+            font-size: 20px;
+          }
           .checker {
             margin-right: 20px;
+            font-size: 200px;
           }
         }
 
@@ -106,6 +115,10 @@ body {
 
         .del-icon {
           display: none;
+          img {
+            width: 20px;
+            height: 30px;
+          }
         }
       }
     }

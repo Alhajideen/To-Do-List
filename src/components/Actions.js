@@ -1,32 +1,51 @@
+import delIcon from '../img/del.png';
+
 const active = (items, container) => {
   let toShow = '';
   items.forEach((elem) => {
     toShow += ` <div class="to-hold">
       <div class='text-box'>
         <input type='checkbox' class="checker" />
-        <h2>${elem.description}</h2>
+        <input type="text" class="edit-item"/>
+        <h2 class="desc">${elem.description}</h2>
+
       </div>
       <div class='edit-icon'>
         <i class='fa-regular fa-ellipsis-vertical'></i>
       </div>
       <div class='del-icon'>
-       <i class="fa-solid fa-trash-can"></i>
+       <img src="${delIcon}" alt="" />
       </div>
       </div>
     </div>
 `;
   });
   container.innerHTML = toShow;
-  deleteItem();
+  deleteItem(items);
 };
 
-const deleteItem = () => {
-  const editBtn = document.querySelector('.edit-icon');
-  const delBtn = document.querySelector('.del-icon');
-  editBtn.addEventListener('click', () => {
-    console.log('I de work');
-    delBtn.classList.toggle('visible');
-    editBtn.classList.toggle('hidden');
+const deleteItem = (item) => {
+  const editBtn = document.querySelectorAll('.edit-icon');
+  const delBtn = document.querySelectorAll('.del-icon');
+  const editInput = document.querySelectorAll('.edit-item');
+  const description = document.querySelectorAll('.desc');
+  editBtn.forEach((elem, index) => {
+    elem.addEventListener('click', () => {
+      console.log('I de work ' + index);
+      delBtn[index].classList.toggle('visible');
+      elem.classList.toggle('hidden');
+      description[index].classList.toggle('hidden');
+      editInput[index].classList.toggle('visible');
+      editInput[index].value = item[index].description;
+    });
+  });
+
+  delBtn.forEach((elem, index) => {
+    elem.addEventListener('click', () => {
+      elem.parentElement.remove();
+      item.splice(index, 1);
+      console.log(item[index]);
+    });
   });
 };
 
