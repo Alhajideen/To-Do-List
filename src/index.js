@@ -38,7 +38,7 @@ window.addEventListener('load', () => {
   if (parsed) {
     active(parsed, container);
   } else {
-    container.innerHTML = 'E no de';
+    container.innerHTML = `<h1 class="empty">Your List is Empty</h1>`;
   }
 });
 
@@ -54,9 +54,17 @@ btn.addEventListener('click', () => {
     const completed = false;
     const newTodo = new Todo(id, description, completed);
     items.push(newTodo);
-    active(items, container);
+    active(items, container, desc);
     localStorage.setItem('todo', JSON.stringify(items));
   } else {
-    container.innerHTML = 'E no de';
+    let items = [];
+    const id = items.length + 1;
+    const desc = document.querySelector('.description');
+    const description = desc.value;
+    const completed = false;
+    const newTodo = new Todo(id, description, completed);
+    items.push(newTodo);
+    active(items, container, desc);
+    localStorage.setItem('todo', JSON.stringify(items));
   }
 });

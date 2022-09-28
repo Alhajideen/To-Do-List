@@ -1,6 +1,7 @@
 import delIcon from '../img/del.png';
+import Storage from '../modules/Localstorage';
 
-const active = (items, container) => {
+const active = (items, container, desc) => {
   let toShow = '';
   items.forEach((elem) => {
     toShow += ` <div class="to-hold">
@@ -22,6 +23,11 @@ const active = (items, container) => {
   });
   container.innerHTML = toShow;
   deleteItem(items);
+  clear(desc);
+};
+
+const clear = (desc) => {
+  desc.value = '';
 };
 
 const deleteItem = () => {
@@ -47,9 +53,11 @@ const deleteItem = () => {
       let storedItem = localStorage.getItem('todo');
       let item = JSON.parse(storedItem);
       elem.parentElement.remove();
-      item.splice(index, 1);
-      console.log(item[index]);
-      localStorage.setItem('todo', JSON.stringify(item));
+      if (item.length == 1) {
+        localStorage.removeItem('todo');
+      } else {
+        Storage.resetId(index);
+      }
     });
   });
 };
