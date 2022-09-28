@@ -1,5 +1,6 @@
 import './style.scss';
 import Arrow from './img/Arrows-Down-Left-icon.png';
+import Todo from './modules/Todo.js';
 
 function component() {
   return `<div class='to-do'>
@@ -25,27 +26,24 @@ function component() {
 document.querySelector('.container').innerHTML = component();
 
 // Global variables
-const items = [
-  {
-    id: 1,
-    description: 'Wash the dishes',
-    completed: false,
-  },
-  {
-    id: 2,
-    description: 'complete To Do List project',
-    completed: false,
-  },
-  {
-    id: 3,
-    description: 'Fix the car',
-    completed: false,
-  },
-];
+const items = [];
+const btn = document.querySelector('.add-btn');
+const container = document.querySelector('.todo-list');
+
+// Event handler
+
+btn.addEventListener('click', () => {
+  const id = Date.now();
+  const desc = document.querySelector('.description');
+  const description = desc.value;
+  const completed = false;
+  const newTodo = new Todo(id, description, completed);
+  items.push(newTodo);
+  addtoDom();
+});
 
 // Populate Dom
 const addtoDom = () => {
-  const container = document.querySelector('.todo-list');
   let toShow = '';
   items.forEach((elem) => {
     toShow += ` <div class="to-hold">
@@ -62,4 +60,3 @@ const addtoDom = () => {
   });
   container.innerHTML = toShow;
 };
-addtoDom();
