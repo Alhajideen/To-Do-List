@@ -99,6 +99,7 @@ body {
         .text-box {
           display: flex;
           justify-content: space-between;
+
           .edit-item {
             display: none;
             width: 95%;
@@ -107,6 +108,7 @@ body {
             outline: none;
             font-size: 20px;
           }
+
           .checker {
             margin-right: 20px;
             font-size: 200px;
@@ -120,6 +122,7 @@ body {
 
         .del-icon {
           display: none;
+
           img {
             width: 20px;
             height: 30px;

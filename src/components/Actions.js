@@ -1,5 +1,5 @@
 import delIcon from '../img/del.png';
-import Storage from '../modules/Localstorage';
+import Storage from '../modules/Localstorage.js';
 
 const active = (items, container, desc) => {
   let toShow = '';
@@ -37,9 +37,8 @@ const deleteItem = () => {
   const description = document.querySelectorAll('.desc');
   editBtn.forEach((elem, index) => {
     elem.addEventListener('click', () => {
-      let storedItem = localStorage.getItem('todo');
-      let item = JSON.parse(storedItem);
-      console.log('I de work ' + index);
+      const storedItem = localStorage.getItem('todo');
+      const item = JSON.parse(storedItem);
       delBtn[index].classList.toggle('visible');
       elem.classList.toggle('hidden');
       description[index].classList.toggle('hidden');
@@ -50,10 +49,10 @@ const deleteItem = () => {
 
   delBtn.forEach((elem, index) => {
     elem.addEventListener('click', () => {
-      let storedItem = localStorage.getItem('todo');
-      let item = JSON.parse(storedItem);
+      const storedItem = localStorage.getItem('todo');
+      const item = JSON.parse(storedItem);
       elem.parentElement.remove();
-      if (item.length == 1) {
+      if (item.length === 1) {
         localStorage.removeItem('todo');
       } else {
         Storage.resetId(index);
@@ -62,4 +61,4 @@ const deleteItem = () => {
   });
 };
 
-export { active };
+export default active;

@@ -1,7 +1,7 @@
 import './style.scss';
 import Arrow from './img/Arrows-Down-Left-icon.png';
 import Todo from './modules/Todo.js';
-import { active } from './components/Actions';
+import active from './components/Actions.js';
 
 function component() {
   return `<div class='to-do'>
@@ -30,24 +30,24 @@ document.querySelector('.container').innerHTML = component();
 const btn = document.querySelector('.add-btn');
 const container = document.querySelector('.todo-list');
 
-//Get Item from local storage and diplay on load
+// Get Item from local storage and diplay on load
 
 window.addEventListener('load', () => {
-  let storedItem = localStorage.getItem('todo');
-  let parsed = JSON.parse(storedItem);
+  const storedItem = localStorage.getItem('todo');
+  const parsed = JSON.parse(storedItem);
   if (parsed) {
     active(parsed, container);
   } else {
-    container.innerHTML = `<h1 class="empty">Your List is Empty</h1>`;
+    container.innerHTML = '<h1 class="empty">Your List is Empty</h1>';
   }
 });
 
 // Event handler
 btn.addEventListener('click', () => {
-  let storedItem = localStorage.getItem('todo');
-  let parsed = JSON.parse(storedItem);
+  const storedItem = localStorage.getItem('todo');
+  const parsed = JSON.parse(storedItem);
   if (parsed) {
-    let items = parsed;
+    const items = parsed;
     const id = items.length + 1;
     const desc = document.querySelector('.description');
     const description = desc.value;
@@ -57,7 +57,7 @@ btn.addEventListener('click', () => {
     active(items, container, desc);
     localStorage.setItem('todo', JSON.stringify(items));
   } else {
-    let items = [];
+    const items = [];
     const id = items.length + 1;
     const desc = document.querySelector('.description');
     const description = desc.value;
