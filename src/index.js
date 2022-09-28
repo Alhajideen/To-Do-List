@@ -1,6 +1,7 @@
 import './style.scss';
 import Arrow from './img/Arrows-Down-Left-icon.png';
 import Todo from './modules/Todo.js';
+import active from './components/ToDom';
 
 function component() {
   return `<div class='to-do'>
@@ -30,8 +31,8 @@ const items = [];
 const btn = document.querySelector('.add-btn');
 const container = document.querySelector('.todo-list');
 
-// Event handler
 
+// Event handler
 btn.addEventListener('click', () => {
   const id = Date.now();
   const desc = document.querySelector('.description');
@@ -39,24 +40,5 @@ btn.addEventListener('click', () => {
   const completed = false;
   const newTodo = new Todo(id, description, completed);
   items.push(newTodo);
-  addtoDom();
+  active(items, container);
 });
-
-// Populate Dom
-const addtoDom = () => {
-  let toShow = '';
-  items.forEach((elem) => {
-    toShow += ` <div class="to-hold">
-      <div class='text-box'>
-        <input type='checkbox' class="checker" />
-        <h2>${elem.description}</h2>
-      </div>
-      <div class='edit-icon'>
-        <i class='fa-regular fa-ellipsis-vertical'></i>
-      </div>
-      </div>
-    </div>
-`;
-  });
-  container.innerHTML = toShow;
-};
