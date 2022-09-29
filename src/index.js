@@ -31,7 +31,6 @@ const btn = document.querySelector('.add-btn');
 const container = document.querySelector('.todo-list');
 
 // Get Item from local storage and diplay on load
-
 window.addEventListener('load', () => {
   const storedItem = localStorage.getItem('todo');
   const parsed = JSON.parse(storedItem);

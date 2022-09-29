@@ -4,7 +4,25 @@ import Storage from '../modules/Localstorage.js';
 const active = (items, container, desc) => {
   let toShow = '';
   items.forEach((elem) => {
-    toShow += ` <div class="to-hold">
+    if (elem.completed) {
+      toShow += ` <div class="to-hold">
+      <div class='text-box'>
+        <input type='checkbox' class="checker" checked/>
+        <input type="text" class="edit-item"/>
+        <h2 class="desc strike">${elem.description}</h2>
+
+      </div>
+      <div class='edit-icon'>
+        <i class='fa-regular fa-ellipsis-vertical'></i>
+      </div>
+      <div class='del-icon'>
+       <img src="${delIcon}" alt="" />
+      </div>
+      </div>
+    </div>
+`;
+    } else {
+      toShow += ` <div class="to-hold">
       <div class='text-box'>
         <input type='checkbox' class="checker" />
         <input type="text" class="edit-item"/>
@@ -20,15 +38,17 @@ const active = (items, container, desc) => {
       </div>
     </div>
 `;
+    }
   });
   container.innerHTML = toShow;
   deleteItem(items);
-  clear(desc);
+  // clear(desc);
+  completed();
 };
 
-const clear = (desc) => {
-  desc.value = '';
-};
+// const clear = (desc) => {
+//   desc.value = '';
+// };
 
 const deleteItem = () => {
   const editBtn = document.querySelectorAll('.edit-icon');
@@ -74,6 +94,10 @@ const deleteItem = () => {
       }
     });
   };
+};
+
+const completed = () => {
+
 };
 
 export default active;
