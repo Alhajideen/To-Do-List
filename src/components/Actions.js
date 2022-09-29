@@ -64,12 +64,11 @@ const deleteItem = () => {
 
   const edit = (index) => {
     const editInput = document.querySelectorAll('.edit-item');
-    editInput[index].addEventListener('keypress', function (e) {
+    editInput[index].addEventListener('keypress', (e) => {
       if (e.key === 'Enter') {
         const storedItem = localStorage.getItem('todo');
         const item = JSON.parse(storedItem);
         item[index].description = editInput[index].value;
-        console.log(item[index]);
         localStorage.setItem('todo', JSON.stringify(item));
       }
     });
