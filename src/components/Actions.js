@@ -70,6 +70,7 @@ const deleteItem = () => {
         const item = JSON.parse(storedItem);
         item[index].description = editInput[index].value;
         localStorage.setItem('todo', JSON.stringify(item));
+        window.location.reload();
       }
     });
   };
