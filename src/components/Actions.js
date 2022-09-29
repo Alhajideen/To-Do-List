@@ -82,7 +82,7 @@ const deleteItem = () => {
     });
   });
 
-  const edit = (index) => {
+const edit = (index) => {
     const editInput = document.querySelectorAll('.edit-item');
     editInput[index].addEventListener('keypress', (e) => {
       if (e.key === 'Enter') {
@@ -96,8 +96,24 @@ const deleteItem = () => {
   };
 };
 
-const completed = () => {
-
+export const completed = () => {
+  const checkBox = document.querySelectorAll('.checker');
+  const storedItem = localStorage.getItem('todo');
+  const item = JSON.parse(storedItem);
+  checkBox.forEach((elem, index) => {
+    elem.addEventListener('change', () => {
+      if (elem.checked) {
+        item[index].completed = true;
+        localStorage.setItem('todo', JSON.stringify(item));
+        elem.parentNode.childNodes[5].classList.toggle('strike');
+      } else {
+        item[index].completed = false;
+        localStorage.setItem('todo', JSON.stringify(item));
+        elem.parentNode.childNodes[5].classList.toggle('strike');
+      }
+      console.log(elem.checked);
+    });
+  });
 };
 
 export default active;
