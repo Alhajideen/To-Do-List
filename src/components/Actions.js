@@ -44,6 +44,7 @@ const deleteItem = () => {
       description[index].classList.toggle('hidden');
       editInput[index].classList.toggle('visible');
       editInput[index].value = item[index].description;
+      edit(index);
     });
   });
 
@@ -60,6 +61,19 @@ const deleteItem = () => {
       window.location.reload();
     });
   });
+
+  const edit = (index) => {
+    const editInput = document.querySelectorAll('.edit-item');
+    editInput[index].addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        const storedItem = localStorage.getItem('todo');
+        const item = JSON.parse(storedItem);
+        item[index].description = editInput[index].value;
+        console.log(item[index]);
+        localStorage.setItem('todo', JSON.stringify(item));
+      }
+    });
+  };
 };
 
 export default active;
