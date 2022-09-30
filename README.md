@@ -20,7 +20,7 @@
 To get a local copy up and running follow these simple example steps.
 1. Clone the project using `git clone` or just copy the command below:
   ```
-   git clone https://github.com/didierganthier/todo-list.git
+   git clone https://github.com/Alhajideen/To-Do-List
    ```
 2. Open the project with `Visual Studio Code`
 3. Run `npm install` to get the dependencies
@@ -44,7 +44,7 @@ To get a local copy up and running follow these simple example steps.
 
 **Alhajideen**
 
-- GitHub: [@githubhandle](https://github.com/Alhajideen)
+- GitHub: [@Alhajideen](https://github.com/Alhajideen)
 - Twitter: [@twitterhandle](https://twitter.com/Alhaji_deen1)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/nurudeen-salifu-776753244)
 
