@@ -7,7 +7,6 @@ export default class Storage {
       const fixedId = { ...elem, id: arr.length + 1 };
       arr.push(fixedId);
       localStorage.setItem('todo', JSON.stringify(arr));
-      console.log('pomp');
     });
   }
 }

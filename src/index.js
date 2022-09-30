@@ -36,7 +36,7 @@ window.addEventListener('load', () => {
   const storedItem = localStorage.getItem('todo');
   const parsed = JSON.parse(storedItem);
   if (parsed) {
-    if (parsed.length == 0) {
+    if (parsed.length === 0) {
       localStorage.removeItem('todo');
       container.innerHTML = '<h1 class="empty">Your List is Empty</h1>';
     } else {
@@ -63,7 +63,7 @@ btn.addEventListener('click', () => {
     const newTodo = new Todo(id, description, completed);
     items.push(newTodo);
     localStorage.setItem('todo', JSON.stringify(items));
-    active(items, container, desc);
+    active(items, container);
     desc.value = '';
   } else {
     const items = [];
@@ -74,13 +74,13 @@ btn.addEventListener('click', () => {
     const newTodo = new Todo(id, description, completed);
     items.push(newTodo);
     localStorage.setItem('todo', JSON.stringify(items));
-    active(items, container, desc);
+    active(items, container);
     desc.value = '';
   }
 });
 
 cmplt.addEventListener('click', () => {
-  let arr = [];
+  const arr = [];
   const storedItem = localStorage.getItem('todo');
   const item = JSON.parse(storedItem);
   item.forEach((e) => {
@@ -88,7 +88,7 @@ cmplt.addEventListener('click', () => {
       arr.push(e);
     }
   });
-  if (item.length == 0) {
+  if (item.length === 0) {
     localStorage.removeItem('todo');
   } else {
     localStorage.setItem('todo', JSON.stringify(arr));

@@ -1,9 +1,9 @@
 import delIcon from '../img/del.png';
 import Storage from '../modules/Localstorage.js';
 
-const active = (items, container, desc) => {
+const active = (items, container) => {
   let toShow = '';
-  items.forEach((elem, i) => {
+  items.forEach((elem) => {
     if (elem.completed) {
       toShow += ` <div class="to-hold">
       <div class='text-box'>
@@ -41,7 +41,6 @@ const active = (items, container, desc) => {
     }
   });
   container.innerHTML = toShow;
-
   deleteItem(items);
   completed();
 };
@@ -73,11 +72,13 @@ const deleteItem = () => {
       const storedItem = localStorage.getItem('todo');
       const item = JSON.parse(storedItem);
       elem.parentElement.remove();
+      item.splice(index, 1);
       if (item.length === 1) {
         localStorage.removeItem('todo');
       } else {
         Storage.resetId(index);
       }
+      localStorage.setItem('todo', JSON.stringify(item));
       window.location.reload();
     });
   });
