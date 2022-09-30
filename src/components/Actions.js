@@ -3,7 +3,7 @@ import Storage from '../modules/Localstorage.js';
 
 const active = (items, container, desc) => {
   let toShow = '';
-  items.forEach((elem) => {
+  items.forEach((elem, i) => {
     if (elem.completed) {
       toShow += ` <div class="to-hold">
       <div class='text-box'>
@@ -12,10 +12,10 @@ const active = (items, container, desc) => {
         <h2 class="desc strike">${elem.description}</h2>
 
       </div>
-      <div class='edit-icon'>
+      <div class='edit-icon' editindex=${elem.id}>
         <i class='fa-regular fa-ellipsis-vertical'></i>
       </div>
-      <div class='del-icon'>
+      <div class='del-icon' delindex=${elem.id}>
        <img src="${delIcon}" alt="" />
       </div>
       </div>
@@ -29,10 +29,10 @@ const active = (items, container, desc) => {
         <h2 class="desc">${elem.description}</h2>
 
       </div>
-      <div class='edit-icon'>
+      <div class='edit-icon' editindex=${elem.id}>
         <i class='fa-regular fa-ellipsis-vertical'></i>
       </div>
-      <div class='del-icon'>
+      <div class='del-icon' delindex=${elem.id}>
        <img src="${delIcon}" alt="" />
       </div>
       </div>
@@ -41,8 +41,8 @@ const active = (items, container, desc) => {
     }
   });
   container.innerHTML = toShow;
+
   deleteItem(items);
-  // clear(desc);
   completed();
 };
 
@@ -82,7 +82,7 @@ const deleteItem = () => {
     });
   });
 
-const edit = (index) => {
+  const edit = (index) => {
     const editInput = document.querySelectorAll('.edit-item');
     editInput[index].addEventListener('keypress', (e) => {
       if (e.key === 'Enter') {
@@ -96,22 +96,23 @@ const edit = (index) => {
   };
 };
 
-export const completed = () => {
+const completed = () => {
   const checkBox = document.querySelectorAll('.checker');
-  const storedItem = localStorage.getItem('todo');
-  const item = JSON.parse(storedItem);
   checkBox.forEach((elem, index) => {
     elem.addEventListener('change', () => {
       if (elem.checked) {
+        const storedItem = localStorage.getItem('todo');
+        const item = JSON.parse(storedItem);
         item[index].completed = true;
         localStorage.setItem('todo', JSON.stringify(item));
         elem.parentNode.childNodes[5].classList.toggle('strike');
       } else {
+        const storedItem = localStorage.getItem('todo');
+        const item = JSON.parse(storedItem);
         item[index].completed = false;
         localStorage.setItem('todo', JSON.stringify(item));
         elem.parentNode.childNodes[5].classList.toggle('strike');
       }
-      console.log(elem.checked);
     });
   });
 };

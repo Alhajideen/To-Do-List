@@ -2,6 +2,7 @@ import './style.scss';
 import Arrow from './img/Arrows-Down-Left-icon.png';
 import Todo from './modules/Todo.js';
 import active from './components/Actions.js';
+import clearDone from './modules/Clear';
 
 function component() {
   return `<div class='to-do'>
@@ -21,7 +22,7 @@ function component() {
      
   </div>
       <div class='clear-cmpl border'>
-        <button type="button">Clear all completed</button>
+        <button type="button" class="clear-completed">Clear all completed</button>
       </div>`;
 }
 document.querySelector('.container').innerHTML = component();
@@ -29,14 +30,23 @@ document.querySelector('.container').innerHTML = component();
 // Global variables
 const btn = document.querySelector('.add-btn');
 const container = document.querySelector('.todo-list');
+const cmplt = document.querySelector('.clear-completed');
 
 // Get Item from local storage and diplay on load
 window.addEventListener('load', () => {
   const storedItem = localStorage.getItem('todo');
   const parsed = JSON.parse(storedItem);
   if (parsed) {
-    active(parsed, container);
-  } else {
+    if (parsed.length == 0) {
+      localStorage.removeItem('todo');
+      container.innerHTML = '<h1 class="empty">Your List is Empty</h1>';
+    } else {
+      const desc = document.querySelector('.description');
+      const description = desc.value;
+      active(parsed, container, description);
+    }
+  }
+  if (!parsed) {
     container.innerHTML = '<h1 class="empty">Your List is Empty</h1>';
   }
 });
@@ -53,8 +63,9 @@ btn.addEventListener('click', () => {
     const completed = false;
     const newTodo = new Todo(id, description, completed);
     items.push(newTodo);
-    active(items, container, desc);
     localStorage.setItem('todo', JSON.stringify(items));
+    active(items, container, desc);
+    desc.value = '';
   } else {
     const items = [];
     const id = items.length + 1;
@@ -63,7 +74,25 @@ btn.addEventListener('click', () => {
     const completed = false;
     const newTodo = new Todo(id, description, completed);
     items.push(newTodo);
-    active(items, container, desc);
     localStorage.setItem('todo', JSON.stringify(items));
+    active(items, container, desc);
+    desc.value = '';
   }
+});
+
+cmplt.addEventListener('click', () => {
+  let arr = [];
+  const storedItem = localStorage.getItem('todo');
+  const item = JSON.parse(storedItem);
+  item.forEach((e) => {
+    if (!e.completed) {
+      arr.push(e);
+    }
+  });
+  if (item.length == 0) {
+    localStorage.removeItem('todo');
+  } else {
+    localStorage.setItem('todo', JSON.stringify(arr));
+  }
+  window.location.reload();
 });
