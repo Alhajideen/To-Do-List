@@ -2,7 +2,6 @@ import './style.scss';
 import Arrow from './img/Arrows-Down-Left-icon.png';
 import Todo from './modules/Todo.js';
 import active from './components/Actions.js';
-import clearDone from './modules/Clear';
 
 function component() {
   return `<div class='to-do'>
