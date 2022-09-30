@@ -4,7 +4,10 @@
   "description": "This is a simple webpack boilerplate that I will be using for javascript projects.",
   "main": "index.js",
   "devtool": "source-map",
+
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --mode development",
     "start": "webpack serve --open",
@@ -21,7 +24,6 @@
   "bugs": {
     "url": "https://github.com/Alhajideen/webpack-boilerplate/issues"
   },
-  "homepage": "https://github.com/Alhajideen/webpack-boilerplate#readme",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.2.0",
     "css-loader": "^6.7.1",
@@ -38,6 +40,7 @@
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.26.0",
+    "gh-pages": "^4.0.0",
     "hint": "^7.1.2",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
