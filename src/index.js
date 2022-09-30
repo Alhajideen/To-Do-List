@@ -13,8 +13,10 @@ function component() {
     </div>
     <div class="text-area border">
     <div class='input-field'>
-      <input class="field description" type='text' placeholder='Add to your list' />
-      <img class="add-btn arrow-left" src=${Arrow} alt='' />
+     <form class='input-field'>
+      <input class="field description" type='text' placeholder='Add to your list' required/>
+      <button class='submit-btn'><img class="add-btn arrow-left" src=${Arrow} alt='' /></button>
+     </form>
     </div>
     </div>
     <div class='todo-list border'>
@@ -51,7 +53,9 @@ window.addEventListener('load', () => {
 });
 
 // Event handler
-btn.addEventListener('click', () => {
+let form = document.querySelector('.input-field');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
   const storedItem = localStorage.getItem('todo');
   const parsed = JSON.parse(storedItem);
   if (parsed) {
