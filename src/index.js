@@ -29,7 +29,6 @@ function component() {
 document.querySelector('.container').innerHTML = component();
 
 // Global variables
-const btn = document.querySelector('.add-btn');
 const container = document.querySelector('.todo-list');
 const cmplt = document.querySelector('.clear-completed');
 
@@ -53,7 +52,7 @@ window.addEventListener('load', () => {
 });
 
 // Event handler
-let form = document.querySelector('.input-field');
+const form = document.querySelector('.input-field');
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const storedItem = localStorage.getItem('todo');
